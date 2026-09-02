@@ -1,0 +1,88 @@
+.conn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 28px;
+  padding: 0 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  transition:
+    border-color 200ms var(--ease),
+    background-color 200ms var(--ease);
+}
+
+.conn-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: none;
+  transition: background-color 200ms var(--ease);
+}
+
+.conn-dot::after {
+  content: '';
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.conn-checking {
+  color: var(--warn);
+  border-color: rgba(227, 169, 79, 0.35);
+}
+
+.conn-checking .conn-dot {
+  background: var(--warn);
+  animation: conn-pulse 1.2s var(--ease) infinite;
+}
+
+.conn-online {
+  color: var(--ok);
+  border-color: rgba(76, 190, 131, 0.35);
+  background: rgba(76, 190, 131, 0.06);
+}
+
+.conn-online .conn-dot {
+  background: var(--ok);
+  box-shadow: 0 0 0 0 rgba(76, 190, 131, 0.5);
+  animation: conn-ring 2.4s var(--ease) infinite;
+}
+
+.conn-offline {
+  color: var(--text-faint);
+  border-color: var(--border);
+  background: var(--surface-2);
+}
+
+.conn-offline .conn-dot {
+  background: var(--text-faint);
+}
+
+@keyframes conn-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes conn-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(76, 190, 131, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(76, 190, 131, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(76, 190, 131, 0);
+  }
+}
